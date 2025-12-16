@@ -1,73 +1,178 @@
-# Welcome to your Lovable project
+# 📦 Smart Inventory Management System
 
-## Project info
+A modern, real-time inventory management application with barcode/QR scanning capabilities, built with React and TypeScript.
 
-**URL**: https://lovable.dev/projects/114db7d2-1853-4477-9591-06d683655be4
+---
 
-## How can I edit this code?
+## ✨ Features
 
-There are several ways of editing your application.
+| Feature | Description |
+|---------|-------------|
+| 📊 **Dashboard** | Real-time overview of inventory stats, low stock alerts, and recent activity |
+| 📋 **Inventory Management** | Full CRUD operations with search, filter, and sort capabilities |
+| 📸 **Barcode Scanner** | Camera-based barcode/QR code scanning for quick item lookup |
+| ⚠️ **Low Stock Alerts** | Automatic detection and display of items below minimum quantity |
+| 📱 **Responsive Design** | Works seamlessly on desktop, tablet, and mobile devices |
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/114db7d2-1853-4477-9591-06d683655be4) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend Framework:** React 18 with TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn/ui (Radix UI primitives)
+- **Routing:** React Router v6
+- **State Management:** TanStack Query
+- **Barcode Scanning:** html5-qrcode
+- **Icons:** Lucide React
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- npm or yarn package manager
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+# 1. Clone the repository
+git clone <your-repo-url>
+cd <project-folder>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 2. Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 3. Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Access the Application
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Once running, open your browser and navigate to:
 
-**Use GitHub Codespaces**
+```
+http://localhost:8080
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📁 Project Structure
 
-This project is built with:
+```
+src/
+├── components/
+│   ├── ui/              # Reusable UI components (shadcn/ui)
+│   ├── Navbar.tsx       # Top navigation bar
+│   ├── Sidebar.tsx      # Desktop sidebar navigation
+│   ├── MobileNav.tsx    # Mobile bottom navigation
+│   ├── StockBadge.tsx   # Stock status indicator
+│   └── ItemModal.tsx    # Add/Edit item modal
+├── pages/
+│   ├── Dashboard.tsx    # Main dashboard view
+│   ├── InventoryPage.tsx # Inventory management
+│   ├── ScannerPage.tsx  # Barcode scanner
+│   └── LowStockPage.tsx # Low stock items view
+├── lib/
+│   ├── inventoryStorage.ts # Local storage management
+│   └── utils.ts         # Utility functions
+└── App.tsx              # Main application component
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 📖 Usage Guide
 
-Simply open [Lovable](https://lovable.dev/projects/114db7d2-1853-4477-9591-06d683655be4) and click on Share -> Publish.
+### Dashboard
+View key metrics including total items, low stock count, and recent inventory changes.
 
-## Can I connect a custom domain to my Lovable project?
+### Inventory Management
+- **Add Items:** Click the "Add Item" button to create new inventory entries
+- **Edit Items:** Click the edit icon on any item row
+- **Delete Items:** Click the trash icon to remove items
+- **Search:** Use the search bar to find items by name or SKU
+- **Filter:** Filter by category using the dropdown
 
-Yes, you can!
+### Barcode Scanner
+1. Navigate to the Scanner page
+2. Grant camera permissions when prompted
+3. Point your camera at a barcode or QR code
+4. The system will automatically look up the item by SKU
+5. Quickly increment/decrement quantities or edit item details
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Low Stock Alerts
+Items that fall at or below their minimum quantity threshold are automatically flagged and displayed on the Low Stock page.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+## 📊 Data Schema
+
+Each inventory item contains:
+
+```typescript
+interface InventoryItem {
+  id: string;          // Unique identifier
+  name: string;        // Item name
+  category: string;    // Item category
+  sku: string;         // Stock Keeping Unit
+  quantity: number;    // Current quantity
+  minQuantity: number; // Minimum threshold
+  location: string;    // Storage location
+  updatedAt: string;   // Last update timestamp
+}
+```
+
+---
+
+## 🎨 Stock Status Indicators
+
+| Status | Color | Condition |
+|--------|-------|-----------|
+| 🟢 In Stock | Green | quantity > minQuantity |
+| 🟡 Low Stock | Yellow | quantity = minQuantity |
+| 🔴 Critical | Red | quantity < minQuantity |
+
+---
+
+## 📱 Camera Scanner Requirements
+
+For the barcode scanner to work:
+- Use HTTPS in production (or localhost for development)
+- Grant camera permissions when prompted
+- Ensure adequate lighting for best results
+- Supported formats: QR Code, Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E
+
+---
+
+## 🔧 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+
+---
+
+## 🗄️ Data Persistence
+
+Currently, all data is stored in the browser's **localStorage**. This means:
+- ✅ Data persists across page refreshes
+- ✅ No backend setup required
+- ⚠️ Data is browser-specific (not synced across devices)
+- ⚠️ Clearing browser data will reset inventory
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
