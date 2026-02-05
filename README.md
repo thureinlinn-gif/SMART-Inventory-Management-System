@@ -168,6 +168,17 @@ Currently, all data is stored in the browser's **localStorage**. This means:
 
 ---
 
+
+## MVP
+<img width="1882" height="897" alt="image" src="https://github.com/user-attachments/assets/52fd8c81-4110-4c47-a14e-d50254d4911d" />
+<img width="1895" height="892" alt="image" src="https://github.com/user-attachments/assets/9fa67f4f-a45d-4e15-a2e6-37af13fdecd5" />
+<img width="1858" height="888" alt="image" src="https://github.com/user-attachments/assets/87e616ae-deed-40c5-b194-a3cebb7c1923" />
+<img width="1903" height="888" alt="image" src="https://github.com/user-attachments/assets/953bcee2-2d61-4fb7-86cd-3b03a83559ff" />
+
+
+---
+
+
 ## 🤝 Contributing
 
 1. Fork the repository
